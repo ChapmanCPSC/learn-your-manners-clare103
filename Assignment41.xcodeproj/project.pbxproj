@@ -13,6 +13,10 @@
 		344E8F8A1CBDF2B300125ABA /* Assignment41.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 344E8F881CBDF2B300125ABA /* Assignment41.xcdatamodeld */; };
 		344E8F8C1CBDF2B300125ABA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 344E8F8B1CBDF2B300125ABA /* Assets.xcassets */; };
 		344E8F8F1CBDF2B300125ABA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 344E8F8D1CBDF2B300125ABA /* LaunchScreen.storyboard */; };
+		344E8F9A1CBDF3CE00125ABA /* MannersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344E8F991CBDF3CE00125ABA /* MannersCell.swift */; };
+		34A7966F1CBF16FA00DE355D /* Manners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A7966E1CBF16FA00DE355D /* Manners.swift */; };
+		34A796711CBF207800DE355D /* MannersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A796701CBF207800DE355D /* MannersVC.swift */; };
+		34AB28731CC43F740051E9B4 /* Manners+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AB28721CC43F740051E9B4 /* Manners+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		344E8F8B1CBDF2B300125ABA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		344E8F8E1CBDF2B300125ABA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		344E8F901CBDF2B300125ABA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		344E8F991CBDF3CE00125ABA /* MannersCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MannersCell.swift; sourceTree = "<group>"; };
+		34A7966E1CBF16FA00DE355D /* Manners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manners.swift; sourceTree = "<group>"; };
+		34A796701CBF207800DE355D /* MannersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MannersVC.swift; sourceTree = "<group>"; };
+		34AB28721CC43F740051E9B4 /* Manners+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Manners+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +64,43 @@
 		344E8F801CBDF2B300125ABA /* Assignment41 */ = {
 			isa = PBXGroup;
 			children = (
+				344E8F981CBDF2D200125ABA /* Controller */,
+				344E8F971CBDF2CE00125ABA /* View */,
+				344E8F961CBDF2C900125ABA /* Model */,
 				344E8F811CBDF2B300125ABA /* AppDelegate.swift */,
-				344E8F831CBDF2B300125ABA /* ViewController.swift */,
-				344E8F851CBDF2B300125ABA /* Main.storyboard */,
 				344E8F8B1CBDF2B300125ABA /* Assets.xcassets */,
 				344E8F8D1CBDF2B300125ABA /* LaunchScreen.storyboard */,
 				344E8F901CBDF2B300125ABA /* Info.plist */,
 				344E8F881CBDF2B300125ABA /* Assignment41.xcdatamodeld */,
 			);
 			path = Assignment41;
+			sourceTree = "<group>";
+		};
+		344E8F961CBDF2C900125ABA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				34A7966E1CBF16FA00DE355D /* Manners.swift */,
+				34AB28721CC43F740051E9B4 /* Manners+CoreDataProperties.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		344E8F971CBDF2CE00125ABA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				344E8F851CBDF2B300125ABA /* Main.storyboard */,
+				344E8F991CBDF3CE00125ABA /* MannersCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		344E8F981CBDF2D200125ABA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				34A796701CBF207800DE355D /* MannersVC.swift */,
+				344E8F831CBDF2B300125ABA /* ViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,8 +175,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				344E8F9A1CBDF3CE00125ABA /* MannersCell.swift in Sources */,
 				344E8F8A1CBDF2B300125ABA /* Assignment41.xcdatamodeld in Sources */,
 				344E8F841CBDF2B300125ABA /* ViewController.swift in Sources */,
+				34AB28731CC43F740051E9B4 /* Manners+CoreDataProperties.swift in Sources */,
+				34A796711CBF207800DE355D /* MannersVC.swift in Sources */,
+				34A7966F1CBF16FA00DE355D /* Manners.swift in Sources */,
 				344E8F821CBDF2B300125ABA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,6 +333,7 @@
 				344E8F951CBDF2B300125ABA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
