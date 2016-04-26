@@ -15,6 +15,12 @@ class MannersCell: UITableViewCell {
         
     @IBOutlet weak var mannersImg: UIImageView!
     
+    var _mannersDesc = ""
+    
+    var mannersDesc: String {
+        return _mannersDesc
+    }
+    
     var manners = Manners()
     
     var current_index = 0
@@ -28,6 +34,7 @@ class MannersCell: UITableViewCell {
         
             mannersLbl.text = manners.manners_name[index]
             mannersImg.image = manners.manners_images[index]
+            _mannersDesc = manners.manners_desc[index]
       }
     
     

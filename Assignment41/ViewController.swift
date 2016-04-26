@@ -7,23 +7,34 @@
 //
 
 import UIKit
-import CoreData
+import Foundation
+import MessageUI
 
-
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate, UIAlertViewDelegate {
     
     
+    @IBOutlet weak var summaryBtn: UIButton!
     @IBOutlet weak var mannersTable: UITableView!
-   // var manners = [Manners]()
+    
+    var alertView = UIAlertView()
+    var actionString: String?
+    var body = ""
+   
+    
+    var option: String?
+    
+    
+   // var emailVC = EmailVC()
+    
     var checked = [Bool](count: 9, repeatedValue: false)
+    var manners = Manners()
+    
     
     var _currentIndex: Int!
-    
     var currentIndex: Int {
             return self._currentIndex
         }
     
-   // @IBOutlet weak var mannersTitleLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,33 +42,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         mannersTable.delegate = self
         mannersTable.dataSource = self
-
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-       // fetchAndSetResults()
-      //  mannersTable.reloadData()
-    }
-
-/*
-    func fetchAndSetResults(){
+       // mailVC.mailComposeDelegate = self
         
-        let app = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = app.managedObjectContext
-        let fetchRequest = NSFetchRequest(entityName: "Manners")
-        
-        do {
-            let results = try context.executeFetchRequest(fetchRequest)
-            self.manners = results as! [Manners]
-        }catch let err as NSError {
-            print(err.debugDescription)
-        }
     }
-*/
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        //let next_manners = manners[indexPath.row]
         
         if let cell = mannersTable.dequeueReusableCellWithIdentifier("MannersCell") as? MannersCell {
             cell.configureCell(indexPath.row)
@@ -67,7 +56,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             else {
                 cell.accessoryType = .Checkmark
             }
-           // saveChecked(indexPath.row)
             return cell
         }
         else{
@@ -85,12 +73,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let cell = tableView.cellForRowAtIndexPath(indexPath){
+        if let cell = mannersTable.cellForRowAtIndexPath(indexPath) as? MannersCell{
             if cell.accessoryType == .None{
                 cell.accessoryType = .Checkmark
+                checked[indexPath.row] = true
+                body += "\(manners.manners_name[indexPath.row])-\n\(manners.manners_desc[indexPath.row])\n\n"
+                
             }
         }
-      //  saveChecked(indexPath.row)
+     
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -105,29 +96,59 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
- /*
-    func saveChecked(index: Int) {
-        let app = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = app.managedObjectContext
-        let entity = NSEntityDescription.entityForName("Manners", inManagedObjectContext: context)!
-        let manners = Manners(entity: entity, insertIntoManagedObjectContext: context)
-       // manners.mannersTitle = mannersTitleLbl.text
-
-        if checked[index] == true {
-            manners.mannersChecked = true
-        }
-        else if checked[index] == false {
-            manners.mannersChecked = false
-        }
-        context.insertObject(manners)
+    func configuredMailVC() -> MFMailComposeViewController {
         
-        do {
-            try context.save()
-        } catch {
-            print("Could not save manners")
+        let mailVC = MFMailComposeViewController()
+        if let email = NSUserDefaults.standardUserDefaults().valueForKey("email") as? String {
+        mailVC.mailComposeDelegate = self
+        mailVC.setToRecipients(["\(email)"])
+        mailVC.setSubject("Learn your manners: Summary")
+        mailVC.setMessageBody(self.body, isHTML: false)
         }
+        
+        return mailVC
         
     }
-    */
+    
+    func showMailError() {
+        let sendMailError = UIAlertView(title: "Could not send email", message: "Your device could not send e-mail. Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+        sendMailError.show()
+    }
+    
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        
+        switch result.rawValue {
+            
+        case MFMailComposeResultCancelled.rawValue:
+            print("cancelled mail")
+            break
+        case MFMailComposeResultSent.rawValue:
+            print("sent")
+            break
+        case MFMailComposeResultFailed.rawValue:
+            print("failed")
+            break
+        default:
+            break
+            
+        }
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+
+    @IBAction func sendSummary(sender: AnyObject) {
+        if MFMailComposeViewController.canSendMail() {
+            self.presentViewController(self.configuredMailVC(), animated: true, completion: nil)
+            
+        }else {
+            self.showMailError()
+        }
+
+    
+    }
+    
+    
     
 }

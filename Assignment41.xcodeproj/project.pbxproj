@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34362B341CCD873B00D1F24E /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34362B331CCD873B00D1F24E /* Email.swift */; };
+		34362B361CCD8E6700D1F24E /* EmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34362B351CCD8E6700D1F24E /* EmailVC.swift */; };
 		344E8F821CBDF2B300125ABA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344E8F811CBDF2B300125ABA /* AppDelegate.swift */; };
 		344E8F841CBDF2B300125ABA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344E8F831CBDF2B300125ABA /* ViewController.swift */; };
 		344E8F871CBDF2B300125ABA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 344E8F851CBDF2B300125ABA /* Main.storyboard */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		34362B331CCD873B00D1F24E /* Email.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
+		34362B351CCD8E6700D1F24E /* EmailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailVC.swift; sourceTree = "<group>"; };
 		344E8F7E1CBDF2B300125ABA /* Assignment41.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment41.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		344E8F811CBDF2B300125ABA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		344E8F831CBDF2B300125ABA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +85,7 @@
 			children = (
 				34A7966E1CBF16FA00DE355D /* Manners.swift */,
 				34AB28721CC43F740051E9B4 /* Manners+CoreDataProperties.swift */,
+				34362B331CCD873B00D1F24E /* Email.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -99,6 +104,7 @@
 			children = (
 				34A796701CBF207800DE355D /* MannersVC.swift */,
 				344E8F831CBDF2B300125ABA /* ViewController.swift */,
+				34362B351CCD8E6700D1F24E /* EmailVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -178,9 +184,11 @@
 				344E8F9A1CBDF3CE00125ABA /* MannersCell.swift in Sources */,
 				344E8F8A1CBDF2B300125ABA /* Assignment41.xcdatamodeld in Sources */,
 				344E8F841CBDF2B300125ABA /* ViewController.swift in Sources */,
+				34362B361CCD8E6700D1F24E /* EmailVC.swift in Sources */,
 				34AB28731CC43F740051E9B4 /* Manners+CoreDataProperties.swift in Sources */,
 				34A796711CBF207800DE355D /* MannersVC.swift in Sources */,
 				34A7966F1CBF16FA00DE355D /* Manners.swift in Sources */,
+				34362B341CCD873B00D1F24E /* Email.swift in Sources */,
 				344E8F821CBDF2B300125ABA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
